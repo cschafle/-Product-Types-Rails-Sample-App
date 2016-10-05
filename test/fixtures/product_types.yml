@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  created: 2016-10-04 17:15:33
+
+two:
+  title: MyString
+  created: 2016-10-04 17:15:33

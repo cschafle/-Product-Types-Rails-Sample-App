@@ -1,0 +1,32 @@
+<p>
+  <strong>Title:</strong>
+  <%= @product_type.title %>
+</p>
+ 
+<p>
+  <strong>Created Date:</strong>
+  <%= @product_type.created %>
+</p>
+
+<h2>Products:</h2>
+<% @product_type.products.each do |product| %>
+  <p>
+    <strong>Product Name:</strong>
+    <%= product.title %>
+  </p>
+ 
+<% end %>
+
+<h2>Add a Product:</h2>
+<%= form_for([@product_type, @product_type.products.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to '<button type="button">Edit</button>'.html_safe, edit_product_type_path(@product_type) %>
+<%= link_to '<button type="button">Back</button>'.html_safe, product_types_path %>

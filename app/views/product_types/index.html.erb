@@ -1,0 +1,39 @@
+<h1>Product Types:</h1>
+ 
+<table>
+  <tr>
+    <th><%= sortable "title" %></th>
+    <th><%= sortable "created" %></th>
+  </tr>
+ 
+  <% @product_types.each do |product_type| %>
+    <tr>
+      <td><%= product_type.title %></td>
+      <td><%= Time.parse(product_type.created.to_s).utc + Time.zone_offset("PDT") if product_type.created != nil %></td>
+      <td><%= link_to '<button type="button">Show</button>'.html_safe, product_type_path(product_type) %></td>
+      <td><%= link_to '<button type="button">Edit</button>'.html_safe, edit_product_type_path(product_type) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+ <%= link_to '<button type="button">Create New Product Type</button>'.html_safe, new_product_type_path %>
+<br/>
+<br/>
+
+<table>
+  <tr>
+    <th>Products</th>
+    <th>Product Types</th>
+  </tr>
+ 
+  <% @product_types.each do |product_type| %>
+    <% product_type.products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product_type.title%></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
